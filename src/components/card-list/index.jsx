@@ -5,10 +5,11 @@ import './style.css'
 function draw(person, divid, level, index){
     const children = [];
     
-    for(const child of person.children){
-        children.push(child);
+    if(person.children != null){
+        for(const child of person.children){
+            children.push(child);
+        }
     }
-    
     console.log("firstName: "+person.firstName+" level: " +level + " portion: "+(index+1)+" / "+divid)
     return(
         <React.Fragment>

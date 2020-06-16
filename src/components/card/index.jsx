@@ -3,9 +3,11 @@ import "./style.css"
 
 let spouses  = []
 function getSpouses(spouses2){
-    spouses = []
-    for(const spouse1 of spouses2){
-        spouses.push(spouse1);
+        spouses = []
+        if(spouses2 != null){
+            for(const spouse1 of spouses2){
+                spouses.push(spouse1);
+            }
     }
 }
 function drawSpouse(spouse){
