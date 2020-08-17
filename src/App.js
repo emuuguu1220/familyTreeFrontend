@@ -1,38 +1,21 @@
 import React, { Component } from 'react';
-import {CardList} from './components/card-list';
-import './App.css';
+import { CardList } from './components/card-list';
+// import '../App.css';
+import Login from './components/login'
+import Boardtree from './components/board'
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 
 
 
-export default class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-      maxWidth : 1,
-      maxLevel : 1,
-      person: {
-        id : 0,
-        firstName : "",
-        children : [],
-        gender : "Эрэгтэй",
-        spouses : []
-      }
-    };
-  }
-
-  componentDidMount(){
-    fetch("http://localhost:8080/persons/1")
-    .then(response => response.json())
-    .then(data=>this.setState({person : data}));
-  }
-
-
-  render(){
+export default class App extends Component {
+  render() {
     return (
-      <div className="App">
-        <h1>Family Tree</h1>
-        <CardList person = {this.state.person}/>
-      </div>
+      <Router ref={(router) => (this.router = router)} >
+            <Switch>
+              <Route  path = "/board" render = {()=> <Boardtree/>} />
+              <Route  path = "/" render= {()=> <Login/>}/>
+            </Switch>
+        </Router>
     );
   }
 }
