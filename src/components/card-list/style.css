@@ -1,9 +1,9 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     font-family:sans-serif,Arial;
     font-size:10pt;
-    }
+    } */
 
     .tree {
         white-space: nowrap;
@@ -118,18 +118,18 @@
         }
         /*Time for some hover effects*/
         /*We will apply the hover effect the the lineage of the element also*/
-        .tree li div:hover, .tree li div:hover + ul li div {
+        /* .tree li div:hover, .tree li div:hover + ul li div {
         background: #c8e4f8;
         color: #000;
         border: 1px solid #94a0b4;
-        }
+        } */
         /*Connector styles on hover*/
-        .tree li div:hover + ul li::after,
+        /* .tree li div:hover + ul li::after,
         .tree li div:hover + ul li::before,
         .tree li div:hover + ul::before,
         .tree li div:hover + ul ul::before {
         border-color: #94a0b4;
-        }
+        } */
 
 
 
