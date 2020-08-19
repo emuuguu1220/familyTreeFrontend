@@ -7,6 +7,7 @@ import {
 
 
 export class CardList extends Component {
+
     draw(person, divid, level, index) {
         const children = [];
 
@@ -19,7 +20,7 @@ export class CardList extends Component {
         return (
             <React.Fragment>
                 <li >
-                    <Card key={person.id} person={person} wid={divid} level={level} index={index} />
+                    <Card key={person.id} person={person} wid={divid} level={level} index={index} modal={this.props.modal} />
                     <ul >
                         {
                             children.map((child, index) =>
@@ -38,7 +39,6 @@ export class CardList extends Component {
                         justify="center"
                         style={{ height: "100vh" }}
                     >
-
                         <ul>
                             {this.draw(this.props.person, 1, 1, 0)}
                         </ul>

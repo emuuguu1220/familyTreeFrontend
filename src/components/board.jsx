@@ -3,6 +3,8 @@ import { CardList } from './card-list';
 import './board.css';
 import {
   Grid,
+  Modal,
+  makeStyles
 } from '@material-ui/core';
 
 const dataExample = {
@@ -29,7 +31,34 @@ const dataExample = {
   ]
 }
 
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
 export default class board extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -41,8 +70,14 @@ export default class board extends Component {
         children: [],
         gender: "Эрэгтэй",
         spouses: []
-      }
+      },
+      open: false,
+      // modalStyle: getModalStyle()
     };
+  }
+
+  handleModal = (open) => {
+    this.setState({ open });
   }
 
   componentDidMount() {
@@ -68,8 +103,23 @@ export default class board extends Component {
             alignItems="center"
             style={{ height: "100vh" }}
           >
-            <CardList person={this.state.person} />
+            <CardList person={this.state.person} modal={this.handleModal} />
           </Grid>
+          {this.state.open} (
+          {/* <Modal
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+          >
+            <div style={modalStyle} className={classes.paper}>
+              <h2 id="simple-modal-title">Text in a modal</h2>
+              <p id="simple-modal-description">
+                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              </p>
+            </div>
+          </Modal> */}
+          )
 
         </Grid>
       </div>
